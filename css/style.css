@@ -22,3 +22,14 @@ body {
     border: 1px green solid;
   }
 }
+
+a.post {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 1rem;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}

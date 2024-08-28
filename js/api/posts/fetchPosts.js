@@ -1,12 +1,12 @@
-import { postsUrl } from "../../constants/api.js";
+import { postUrl } from "../../constants/api.js";
 
 export async function fetchPosts() {
-  const response = await fetch(postsUrl);
+  const response = await fetch(postUrl);
 
   if (response.ok) {
     const json = await response.json();
     return json;
   }
 
-  throw new Error("bad stuff happened");
+  throw new Error("Error fetching posts");
 }
