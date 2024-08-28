@@ -1,3 +1,3 @@
 # JS 1
 
-Video call 1 - 27 August 2024
+Video call 2 - 28 August 2024
