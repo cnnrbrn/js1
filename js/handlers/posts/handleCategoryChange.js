@@ -1,4 +1,4 @@
-import { createPostsHtml } from "../../ui/posts/createPostsHtml";
+import { createPostsHtml } from "../../ui/posts/createPostsHtml.js";
 
 export function handleCategoryChange(posts) {
   const categorySelect = document.querySelector("#category");
