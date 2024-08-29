@@ -1,7 +1,8 @@
 import { fetchPosts } from "../../api/posts/fetchPosts.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import { createPostsHtml } from "../../ui/posts/createPostsHtml.js";
-import { randomiseArray } from "../../utils/randomiseArray.js";
+import { filterPosts } from "./filterPosts.js";
+import { handleCategoryChange } from "./handleCategoryChange.js";
 
 export async function displayPosts() {
   const container = document.querySelector("#posts-container");
@@ -10,8 +11,9 @@ export async function displayPosts() {
     // get posts from api
     const posts = await fetchPosts();
     // call function with posts array to create html
-    const randomisedPosts = randomiseArray(posts);
-    createPostsHtml(container, randomisedPosts);
+    createPostsHtml(container, posts);
+    filterPosts(posts);
+    handleCategoryChange(posts);
   } catch (error) {
     console.error(error);
     displayMessage(container, "error", error.message);

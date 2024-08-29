@@ -1,7 +1,16 @@
 export function createPostsHtml(container, posts) {
-  container.innerHTML = "";
+  let parent = container;
 
-  console.log("posts", posts);
+  if (typeof container === "string") {
+    parent = document.querySelector(container);
+  }
+
+  if (posts.length === 0) {
+    parent.innerHTML = "No posts found";
+    return;
+  }
+
+  parent.innerHTML = "";
 
   posts.forEach((post) => {
     const { id, title, body } = post;
@@ -19,6 +28,6 @@ export function createPostsHtml(container, posts) {
     postCard.append(titleElement);
     postCard.append(bodyElement);
 
-    container.append(postCard);
+    parent.append(postCard);
   });
 }
