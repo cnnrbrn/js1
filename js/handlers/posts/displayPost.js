@@ -2,6 +2,7 @@ import { fetchPostById } from "../../api/posts/fetchPostById.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import { createPostHtml } from "../../ui/posts/createPostHtml.js";
 import { getQueryParam } from "../../utils/getQueryParam.js";
+import { handleCartIconClick } from "../cart/handleCartIconClick.js";
 
 export async function displayPost() {
   // get id from query string
@@ -21,6 +22,7 @@ export async function displayPost() {
     const post = await fetchPostById(id);
     // create html for the post
     createPostHtml(container, post);
+    handleCartIconClick();
   } catch (error) {
     console.error(error);
     displayMessage(container, "error", error.message);

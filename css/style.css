@@ -29,6 +29,14 @@ main {
   }
 }
 
+a {
+  color: black;
+}
+
+a.active {
+  color: blue;
+}
+
 a.post {
   display: block;
   color: black;
@@ -44,4 +52,12 @@ a.post {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
+}
+
+i {
+  font-size: 3rem;
+
+  &.green {
+    color: green;
+  }
 }

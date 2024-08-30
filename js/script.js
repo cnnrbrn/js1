@@ -1,5 +1,6 @@
 import { displayPosts } from "./handlers/posts/displayPosts.js";
 import { displayPost } from "./handlers/posts/displayPost.js";
+import { displayCart } from "./handlers/cart/displayCart.js";
 
 function router() {
   const { pathname } = window.location;
@@ -16,6 +17,8 @@ function router() {
       console.log("I'm on on the details page");
       displayPost();
       break;
+    case "/cart.html":
+      displayCart();
   }
 }
 
