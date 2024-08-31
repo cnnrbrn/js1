@@ -2,6 +2,7 @@ import { fetchPostById } from "../../api/posts/fetchPostById.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import { createPostHtml } from "../../ui/posts/createPostHtml.js";
 import { getQueryParam } from "../../utils/getQueryParam.js";
+import { handleCartCountDisplay } from "../cart/handleCartCountDisplay.js";
 import { handleCartIconClick } from "../cart/handleCartIconClick.js";
 
 export async function displayPost() {
@@ -23,6 +24,7 @@ export async function displayPost() {
     // create html for the post
     createPostHtml(container, post);
     handleCartIconClick();
+    handleCartCountDisplay();
   } catch (error) {
     console.error(error);
     displayMessage(container, "error", error.message);

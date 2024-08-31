@@ -1,3 +1,5 @@
+import { createCartIcon } from "../cart/createCartIcon.js";
+
 export function createPostsHtml(container, posts) {
   let parent = container;
 
@@ -15,6 +17,9 @@ export function createPostsHtml(container, posts) {
   posts.forEach((post) => {
     const { id, title, body } = post;
 
+    const postWrapper = document.createElement("div");
+    postWrapper.classList.add("post-wrapper");
+
     const postCard = document.createElement("a");
     postCard.classList.add("post");
     postCard.href = `details.html?id=${id}`;
@@ -25,9 +30,14 @@ export function createPostsHtml(container, posts) {
     const bodyElement = document.createElement("p");
     bodyElement.textContent = body;
 
+    const cartIcon = createCartIcon(id, title);
+
     postCard.append(titleElement);
     postCard.append(bodyElement);
 
-    parent.append(postCard);
+    postWrapper.append(postCard);
+    postWrapper.append(cartIcon);
+
+    parent.append(postWrapper);
   });
 }

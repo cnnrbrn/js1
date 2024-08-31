@@ -1,23 +1,30 @@
 import { addToCart, isIdInCart, removeFromCart } from "../../utils/cart.js";
+import { handleCartCountDisplay } from "./handleCartCountDisplay.js";
 
 export function handleCartIconClick() {
-  const cartIcon = document.querySelector("#cart-icon");
+  const cartIcons = document.querySelectorAll("i[data-action='cart']");
 
-  cartIcon.addEventListener("click", respondToCartIconClick);
+  cartIcons.forEach((cartIcon) => {
+    cartIcon.addEventListener("click", respondToCartIconClick);
 
-  function respondToCartIconClick(event) {
-    const cartIcon = event.target;
+    function respondToCartIconClick(event) {
+      const cartIcon = event.target;
 
-    const { id, title } = cartIcon.dataset;
+      console.log(event);
 
-    if (isIdInCart(id)) {
-      removeFromCart(id);
-      cartIcon.classList.add("fa-cart-plus");
-      cartIcon.classList.remove("fa-cart-shopping", "green");
-    } else {
-      addToCart(id, title);
-      cartIcon.classList.remove("fa-cart-plus");
-      cartIcon.classList.add("fa-cart-shopping", "green");
+      const { id, title } = cartIcon.dataset;
+
+      if (isIdInCart(id)) {
+        removeFromCart(id);
+        cartIcon.classList.add("fa-cart-plus");
+        cartIcon.classList.remove("fa-cart-shopping", "green");
+      } else {
+        addToCart(id, title);
+        cartIcon.classList.remove("fa-cart-plus");
+        cartIcon.classList.add("fa-cart-shopping", "green");
+      }
+
+      handleCartCountDisplay();
     }
-  }
+  });
 }

@@ -1,4 +1,5 @@
 import { isIdInCart } from "../../utils/cart.js";
+import { createCartIcon } from "../cart/createCartIcon.js";
 
 export function createPostHtml(container, post) {
   container.innerHTML = "";
@@ -16,17 +17,7 @@ export function createPostHtml(container, post) {
   const bodyElement = document.createElement("p");
   bodyElement.textContent = body;
 
-  const cartIcon = document.createElement("i");
-  cartIcon.classList.add("fa-solid");
-  cartIcon.id = "cart-icon";
-  cartIcon.dataset.id = id;
-  cartIcon.dataset.title = title;
-
-  if (isIdInCart(id)) {
-    cartIcon.classList.add("fa-cart-shopping", "green");
-  } else {
-    cartIcon.classList.add("fa-cart-plus");
-  }
+  const cartIcon = createCartIcon(id, title);
 
   postCard.append(titleElement);
   postCard.append(bodyElement);

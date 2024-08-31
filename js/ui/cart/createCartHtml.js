@@ -8,6 +8,7 @@ export function createCartHtml(container, cart) {
   }
 
   // if cart is not empty, display cart items and total items
+  container.innerHTML = "";
 
   const totalItems = document.createElement("p");
   totalItems.textContent = `Total items: ${cart.length}`;
@@ -18,7 +19,7 @@ export function createCartHtml(container, cart) {
   container.append(totalItems);
 
   cart.forEach((cartItem) => {
-    const { title } = cartItem;
+    const { id, title } = cartItem;
 
     const cartCard = document.createElement("div");
     cartCard.classList.add("cart-item");
@@ -26,7 +27,13 @@ export function createCartHtml(container, cart) {
     const titleElement = document.createElement("h4");
     titleElement.textContent = title;
 
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "remove";
+    removeButton.dataset.action = "remove";
+    removeButton.dataset.id = id;
+
     cartCard.append(titleElement);
+    cartCard.append(removeButton);
     container.append(cartCard);
   });
 

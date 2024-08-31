@@ -8,6 +8,36 @@ body {
   background-color: #f1f1f1;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.cart-indicator {
+  position: relative;
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    display: none;
+  }
+}
+
 main {
   max-width: 1100px;
   margin: 0 auto;
@@ -60,4 +90,20 @@ i {
   &.green {
     color: green;
   }
+}
+
+.post-wrapper {
+  position: relative;
+  padding-right: 1rem;
+
+  i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+  }
+}
+
+.cart-item {
+  display: flex;
 }

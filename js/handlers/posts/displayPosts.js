@@ -1,6 +1,8 @@
 import { fetchPosts } from "../../api/posts/fetchPosts.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import { createPostsHtml } from "../../ui/posts/createPostsHtml.js";
+import { handleCartCountDisplay } from "../cart/handleCartCountDisplay.js";
+import { handleCartIconClick } from "../cart/handleCartIconClick.js";
 import { filterPosts } from "./filterPosts.js";
 import { handleCategoryChange } from "./handleCategoryChange.js";
 
@@ -14,6 +16,8 @@ export async function displayPosts() {
     createPostsHtml(container, posts);
     filterPosts(posts);
     handleCategoryChange(posts);
+    handleCartIconClick();
+    handleCartCountDisplay();
   } catch (error) {
     console.error(error);
     displayMessage(container, "error", error.message);
